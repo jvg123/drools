@@ -137,9 +137,13 @@ public class ClassHierarchyManager {
         boolean isNovel = TypeDeclarationUtils.isNovelClass( typeDescr, pkgRegistry );
         boolean inferFields = ! isNovel && typeDescr.getFields().isEmpty();
 
-        for ( QualifiedName qname : tDescr.getSuperTypes() ) {
+// This loop does not look relevant anymore since it calls the same method for every entry
+//        for ( QualifiedName qname : tDescr.getSuperTypes() ) {
             //descriptor needs fields inherited from superclass
-            if ( mergeInheritedFields(tDescr, unresolvedTypes, unprocessableDescrs, pkgRegistry.getTypeResolver() ) ) {
+//
+// Neither does the if ()
+        mergeInheritedFields(tDescr, unresolvedTypes, unprocessableDescrs, pkgRegistry.getTypeResolver() );
+//                if ( mergeInheritedFields(tDescr, unresolvedTypes, unprocessableDescrs, pkgRegistry.getTypeResolver() ) ) {
                 /*
                 //descriptor also needs metadata from superclass - NO LONGER SINCE DROOLS 6.x
                 for ( AbstractClassTypeDeclarationDescr descr : sortedTypeDescriptors ) {
@@ -152,7 +156,7 @@ public class ClassHierarchyManager {
                     }
                 }
                 */
-            }
+//            }
         }
 
         if ( inferFields ) {
