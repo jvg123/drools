@@ -251,7 +251,7 @@ public class ClassHierarchyManager {
         Map<String, TypeFieldDescr> fieldMap = new LinkedHashMap<String, TypeFieldDescr>();
         boolean isNovel = TypeDeclarationUtils.isNovelClass( typeDescr, kbuilder.getPackageRegistry( typeDescr.getNamespace() ) );
 
-        PackageRegistry registry = kbuilder.getPackageRegistry( superTypePackageName );
+        PackageRegistry registry = (superTypePackageName==null)?null:kbuilder.getPackageRegistry( superTypePackageName );
         InternalKnowledgePackage pack = null;
         if ( registry != null ) {
             pack = registry.getPackage();
